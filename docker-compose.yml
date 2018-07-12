@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  silicaanimus:
+    image: ${DOCKER_REGISTRY}silicaanimus
+    build:
+      context: .
+      dockerfile: Silica Animus/Dockerfile
