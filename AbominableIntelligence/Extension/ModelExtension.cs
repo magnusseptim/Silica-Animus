@@ -1,44 +1,73 @@
-﻿using Microsoft.ML;
+﻿using Abominable_Intelligence.Enums;
+using Abominable_Intelligence.Exceptions;
+using Microsoft.ML;
 using System;
 
-namespace AbominableIntelligence.Extension
+namespace Abominable_Intelligence.Extension
 {
     internal static class ModelExtension
     {
-        public static (LearningPipeline, bool, string) ProcessNextStep(this (LearningPipeline, bool, string) state, Action<LearningPipeline> del)
+        public static (LearningPipeline, bool, string, LearningStage) ProcessNextStep(this (LearningPipeline, bool, string,LearningStage) state, Action<LearningPipeline> del, LearningStage stage)
         {
-            (LearningPipeline, bool, string) result;
+            (LearningPipeline, bool, string,LearningStage) result;
             try
             {
                 del(state.Item1);
-                result = (state.Item1,true, "OK");
+                result = (state.Item1,true, "OK",stage);
             }
             catch (Exception ex)
             {
-                result = (state.Item1, false, ex.Message);
+                result = (state.Item1, false, ex.Message,stage);
             }
 
             return result;
         }
-
-        public static (PredictionModel<DataModel, PredictedDataModel>,bool,string) ReturnTrained<DataModel, PredictedDataModel, Pipeline>
-            (
-                this (Pipeline,bool, string) state, 
-                Func<Pipeline,PredictionModel<DataModel, PredictedDataModel>> del
-            ) where DataModel : class
-                                                                                                                                                                                                                                   where PredictedDataModel : class, new()
+        // To improove by using Logger
+        public static (LearningPipeline, bool, string,LearningStage) ProcessExceptionChecking(this (LearningPipeline, bool, string,LearningStage) state)
         {
-            (PredictionModel<DataModel, PredictedDataModel>, bool, string) result;
+            if (!state.Item2)
+            {
+                //Logger here
+                throw new LearningException(state.Item3);
+            }
+            return state;
+        }
+
+        // To improove by using Logger
+        public static (PredictionModel<DataModel, PredictedDataModel>, bool, string, LearningStage) ProcessExceptionChecking<DataModel, PredictedDataModel>
+        (
+            this (PredictionModel<DataModel, PredictedDataModel>, bool, string, LearningStage) state
+        )
+        where DataModel : class
+        where PredictedDataModel : class, new()
+        {
+            if (!state.Item2)
+            {
+                //Logger here
+                throw new LearningException(state.Item3);
+            }
+            return state;
+        }
+
+        // TODO : Logger
+        public static (PredictionModel<DataModel, PredictedDataModel>,bool,string,LearningStage) ReturnTrained<DataModel, PredictedDataModel, Pipeline>
+        (
+            this (Pipeline,bool, string,LearningStage) state, 
+            Func<PredictionModel<DataModel, PredictedDataModel>> del
+        ) where DataModel : class
+          where PredictedDataModel : class, new()
+        {
+            (PredictionModel<DataModel, PredictedDataModel>, bool, string,LearningStage) result;
             PredictionModel<DataModel, PredictedDataModel> model;
             try
             {
-                model = del(state.Item1);
-                result = (model, true, "OK");
+                model = del();
+                result = (model, true, "OK",LearningStage.Train);
             }
             catch (Exception ex)
             {
                 model = null;
-                result = (model, false, ex.Message);
+                result = (model, false, ex.Message, LearningStage.Train);
             }
 
             return result;

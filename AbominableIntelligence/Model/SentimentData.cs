@@ -5,7 +5,7 @@ using Microsoft.ML.Data;
 using Microsoft.ML.Models;
 using Microsoft.ML.Runtime.Api;
 
-namespace AbominableIntelligence.Model
+namespace Abominable_Intelligence.Model
 {
     public class SentimentData
     {

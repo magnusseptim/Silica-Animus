@@ -1,0 +1,5 @@
+﻿{
+  "TrainingDataFolderName": "TrainingData",
+  "SADataSetaName": "wikipedia-detox-250-line-data.tsv",
+  "SAEvaluateDataSet" : "wikipedia - detox - 250 - line - test.tsv"
+}

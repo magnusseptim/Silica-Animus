@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AbominableIntelligence.Model
+namespace Abominable_Intelligence.Model
 {
     public class SentimentPrediction
     {
