@@ -1,11 +1,11 @@
 # Silica-Animus
 Abominable Intelligence from the Dark Age of Technology providing answers for your questions  
 
-#TODO
+## TODO
 - Test ML Module
 - Add logger (NLog)
 
-#TODO Later
+## TODO Later
 - Confgure API
 - Add Swagger
 - Add JWT auth
