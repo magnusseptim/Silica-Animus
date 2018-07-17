@@ -1,12 +1,20 @@
 ﻿using Microsoft.ML.Runtime.Api;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Abominable_Intelligence.Model
 {
-    public class SentimentPrediction
+    public class SentimentPrediction : ISentimentPrediction
     {
+        public bool Sentiment
+        {
+            get
+            {
+                return sentiment;
+            }
+            set
+            {
+                sentiment = value;
+            }
+        }
         [ColumnName("PredictedLabel")]
         public bool sentiment;
     }

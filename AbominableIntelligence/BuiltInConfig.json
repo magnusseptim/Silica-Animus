@@ -1,5 +1,10 @@
 ﻿{
   "TrainingDataFolderName": "TrainingData",
   "SADataSetaName": "wikipedia-detox-250-line-data.tsv",
-  "SAEvaluateDataSet" : "wikipedia - detox - 250 - line - test.tsv"
+  "SAEvaluateDataSet": "wikipedia-detox-250-line-test.tsv",
+  "TreeBinaryClasifierConfig": {
+    "NumLeaves": "5",
+    "NumTrees": "5",
+    "MinDocumentsInLeafs": "2"
+  }
 }

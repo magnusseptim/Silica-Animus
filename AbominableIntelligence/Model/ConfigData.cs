@@ -11,6 +11,8 @@ namespace Abominable_Intelligence.Model
         public string SADataSetaName { get; set; }
         [JsonProperty(PropertyName = "SAEvaluateDataSet")]
         public string SAEvaluateDataSet { get; set; }
+        [JsonProperty(PropertyName = "TreeBinaryClasifierConfig")]
+        public TreeBinaryClasifierConfig TBC { get; set; }
 
         public string ExceptionMessage { get; set; }
     }

@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Abominable_Intelligence.Enums;
+using System;
 
 namespace Abominable_Intelligence.Exceptions
 {
@@ -9,6 +8,11 @@ namespace Abominable_Intelligence.Exceptions
     public class LearningException : Exception
     {
         public LearningException(string message) : base(message)
+        {
+
+        }
+
+        public LearningException(string message, LearningStage stage) : base(message)
         {
 
         }
