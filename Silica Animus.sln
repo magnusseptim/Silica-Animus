@@ -9,7 +9,7 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abominable_Intelligence", "AbominableIntelligence\Abominable_Intelligence.csproj", "{5943EB9B-F932-4F81-83C2-F9DA0DDE67D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilicaAnimusTests", "..\SilicaAnimusTests\SilicaAnimusTests.csproj", "{D7ED0B54-4F5D-4288-9D8C-7EBB4F752FD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SilicaAnimusTests", "SilicaAnimusTests\SilicaAnimusTests.csproj", "{1B24DF8E-0A5C-4EBA-8334-266020B99F16}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,14 +43,14 @@ Global
 		{5943EB9B-F932-4F81-83C2-F9DA0DDE67D0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5943EB9B-F932-4F81-83C2-F9DA0DDE67D0}.Release|x64.ActiveCfg = Release|x64
 		{5943EB9B-F932-4F81-83C2-F9DA0DDE67D0}.Release|x64.Build.0 = Release|x64
-		{D7ED0B54-4F5D-4288-9D8C-7EBB4F752FD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D7ED0B54-4F5D-4288-9D8C-7EBB4F752FD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D7ED0B54-4F5D-4288-9D8C-7EBB4F752FD1}.Debug|x64.ActiveCfg = Debug|x64
-		{D7ED0B54-4F5D-4288-9D8C-7EBB4F752FD1}.Debug|x64.Build.0 = Debug|x64
-		{D7ED0B54-4F5D-4288-9D8C-7EBB4F752FD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D7ED0B54-4F5D-4288-9D8C-7EBB4F752FD1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D7ED0B54-4F5D-4288-9D8C-7EBB4F752FD1}.Release|x64.ActiveCfg = Release|x64
-		{D7ED0B54-4F5D-4288-9D8C-7EBB4F752FD1}.Release|x64.Build.0 = Release|x64
+		{1B24DF8E-0A5C-4EBA-8334-266020B99F16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B24DF8E-0A5C-4EBA-8334-266020B99F16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B24DF8E-0A5C-4EBA-8334-266020B99F16}.Debug|x64.ActiveCfg = Debug|x64
+		{1B24DF8E-0A5C-4EBA-8334-266020B99F16}.Debug|x64.Build.0 = Debug|x64
+		{1B24DF8E-0A5C-4EBA-8334-266020B99F16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B24DF8E-0A5C-4EBA-8334-266020B99F16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B24DF8E-0A5C-4EBA-8334-266020B99F16}.Release|x64.ActiveCfg = Release|x64
+		{1B24DF8E-0A5C-4EBA-8334-266020B99F16}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
