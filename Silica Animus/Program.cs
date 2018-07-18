@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Silica_Animus.Logger;
 
 namespace Silica_Animus
 {
@@ -14,7 +15,21 @@ namespace Silica_Animus
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            NLog.Logger logger = new LoggerBuilder().BuildDefault();
+            try
+            {
+                // TODO: Share logger from here to rest of app
+                BuildWebHost(args).Run();
+            }
+            catch(Exception ex)
+            {
+                logger.Error(ex, ex.Message);
+                throw ex;
+            }
+            finally
+            {
+                NLog.LogManager.Shutdown();
+            }
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
