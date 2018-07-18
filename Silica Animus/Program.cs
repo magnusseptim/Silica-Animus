@@ -35,6 +35,11 @@ namespace Silica_Animus
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+                .ConfigureLogging(logger =>
+                {
+                    logger.ClearProviders();
+                    logger.SetMinimumLevel(LogLevel.Information);
+                })
                 .Build();
     }
 }
