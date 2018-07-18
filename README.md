@@ -2,8 +2,7 @@
 Abominable Intelligence from the Dark Age of Technology providing answers for your questions  
 
 ## TODO
-- Test ML Module
-- Add logger (NLog)
+- Add logger (NLog) (75% done)
 
 ## TODO Later
 - Confgure API
