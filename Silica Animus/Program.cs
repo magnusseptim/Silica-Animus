@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using NLog.Web;
 using Silica_Animus.Logger;
 
 namespace Silica_Animus
@@ -18,7 +19,6 @@ namespace Silica_Animus
             NLog.Logger logger = new LoggerBuilder().BuildDefault();
             try
             {
-                // TODO: Share logger from here to rest of app
                 BuildWebHost(args).Run();
             }
             catch(Exception ex)
@@ -40,6 +40,7 @@ namespace Silica_Animus
                     logger.ClearProviders();
                     logger.SetMinimumLevel(LogLevel.Information);
                 })
+                .UseNLog()
                 .Build();
     }
 }
