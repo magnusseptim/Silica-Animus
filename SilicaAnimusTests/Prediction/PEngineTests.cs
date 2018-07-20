@@ -2,6 +2,7 @@ using Abominable_Intelligence.Exceptions;
 using Abominable_Intelligence.Model;
 using Abominable_Intelligence.Prediction;
 using FluentAssertions;
+using Microsoft.Extensions.Logging;
 using Moq;
 using NLog;
 using Silica_Animus.Logger;
@@ -100,14 +101,12 @@ namespace SilicaAnimusTests.Prediction
             };
            
             var unitUnderTest = CreatePEngine();
-            Logger logger = new LoggerBuilder().BuildDefault();
 
+            Mock<Microsoft.Extensions.Logging.ILogger> fakeLogger = new Mock<Microsoft.Extensions.Logging.ILogger>();
             // Act
-            unitUnderTest.Train(logger);
+            unitUnderTest.Train(fakeLogger.Object);
 
             IEnumerable<SentimentPrediction> predictions = unitUnderTest.Predict(sentiments);
-
-            var test = predictions.Select(x => x.sentiment).ToList();
 
             IEnumerable<(string text,bool sentiment)> sentimentsAndPredictions = sentiments.Zip(predictions.Select(x=>x.sentiment).ToList(), (sentiment, prediction) => (sentiment.sentimentText, prediction));
             IEnumerable<(string text, bool sentiment)> sentimentsAndExpected = sentiments.Zip(expected, (sentiment, exp) => (sentiment.sentimentText, exp.sentiment));
@@ -124,9 +123,9 @@ namespace SilicaAnimusTests.Prediction
         {
             // Arrange
             var unitUnderTest = CreatePEngine();
-            Logger logger = new LoggerBuilder().BuildDefault();
+            Mock<Microsoft.Extensions.Logging.ILogger> fakeLogger = new Mock<Microsoft.Extensions.Logging.ILogger>();
             // Act
-            unitUnderTest.Train(logger);
+            unitUnderTest.Train(fakeLogger.Object);
             var evaluation = unitUnderTest.Evaluate();
 
             // Assert

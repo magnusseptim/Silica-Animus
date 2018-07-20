@@ -12,6 +12,6 @@ namespace Abominable_Intelligence.Prediction
         PredictedDataModel Predict(DataModel input);
         IEnumerable<PredictedDataModel> Predict(IEnumerable<DataModel> input);
         BinaryClassificationMetrics Evaluate();
-        void Train(Logger logger);
+        void Train(Microsoft.Extensions.Logging.ILogger logger);
     }
 }

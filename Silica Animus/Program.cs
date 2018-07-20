@@ -16,7 +16,7 @@ namespace Silica_Animus
     {
         public static void Main(string[] args)
         {
-            NLog.Logger logger = new LoggerBuilder().BuildDefault();
+            NLog.ILogger logger = new LoggerBuilder().BuildDefault();
             try
             {
                 BuildWebHost(args).Run();

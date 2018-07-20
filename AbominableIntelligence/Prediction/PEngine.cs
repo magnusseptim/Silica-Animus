@@ -57,7 +57,7 @@ namespace Abominable_Intelligence.Prediction
         }
 
 
-        public void Train(Logger logger)
+        public void Train(Microsoft.Extensions.Logging.ILogger logger)
         {
             try
             {
@@ -107,15 +107,15 @@ namespace Abominable_Intelligence.Prediction
             }
         }
 
-        private (LearningPipeline,bool, string,LearningStage,Logger) ProcessFirstStep
+        private (LearningPipeline,bool, string,LearningStage, Microsoft.Extensions.Logging.ILogger) ProcessFirstStep
         (
             Action<LearningPipeline,string> data, 
             LearningPipeline pipeline, 
-            string dataPath, 
-            Logger logger
+            string dataPath,
+            Microsoft.Extensions.Logging.ILogger logger
         )
         {
-            (LearningPipeline, bool, string, LearningStage,Logger) result;
+            (LearningPipeline, bool, string, LearningStage, Microsoft.Extensions.Logging.ILogger) result;
             try
             {
                 data(pipeline,dataPath);

@@ -9,6 +9,16 @@ namespace Abominable_Intelligence.Model
 {
     public class SentimentData : ISentimentData
     {
+        public SentimentData()
+        {
+
+        }
+
+        public SentimentData(string sentimentText)
+        {
+            this.sentimentText = sentimentText;
+        }
+
         public float Sentiment
         {
             get

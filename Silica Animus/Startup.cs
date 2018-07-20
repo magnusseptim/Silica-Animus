@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
+using Abominable_Intelligence.Model;
+using Abominable_Intelligence.Prediction;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,9 +12,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Silica_Animus.Builders;
 using Silica_Animus.Contexts;
 using Silica_Animus.Helpers;
 using Silica_Animus.Model;
+using Silica_Animus.Repository;
 
 namespace Silica_Animus
 {
@@ -46,6 +50,11 @@ namespace Silica_Animus
             services.AddIdentity<IdentityUser, IdentityRole>()
                     .AddEntityFrameworkStores<SilicaIdentityContext>()
                     .AddDefaultTokenProviders();
+
+            services.Configure<PasswordHasherOptions>(options =>
+            {
+                options.CompatibilityMode = PasswordHasherCompatibilityMode.IdentityV3;
+            });
 
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
@@ -82,6 +91,12 @@ namespace Silica_Animus
                     Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedFor |
                     Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto;
             });
+
+            services.AddSingleton<IPEngine<SentimentData, SentimentPrediction>, PEngine<SentimentData, SentimentPrediction>>();
+            services.AddTransient<IPredictionResultBuilder, PredictionResultBuilder>();
+            services.AddTransient<ITokenBuilder, TokenBuilder>();
+            services.AddTransient<IBaseResultBuilder, BaseResultBuilder>();
+            services.AddTransient<IAuthRepository,AuthRepository>();
 
             conf = null;
         }
