@@ -16,7 +16,7 @@ namespace Silica_Animus.Helpers
                     return JsonConvert.DeserializeObject<ConfFile>(reader.ReadToEnd());
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 throw;
             }

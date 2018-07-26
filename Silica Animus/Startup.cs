@@ -15,6 +15,7 @@ using Microsoft.IdentityModel.Tokens;
 using Silica_Animus.Builders;
 using Silica_Animus.Contexts;
 using Silica_Animus.Helpers;
+using Silica_Animus.Middleware;
 using Silica_Animus.Model;
 using Silica_Animus.Repository;
 
@@ -108,6 +109,8 @@ namespace Silica_Animus
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseMiddleware<RequestResponseLoggingMiddleware>();
 
             // Accept just https
             app.Use((req, midd) =>
